@@ -119,6 +119,10 @@ using ReGamePlayerAddPlayerItemMCallback = core::Delegate<cssdk::qboolean(const 
 using ReGamePlayerRemovePlayerItemMChain = mhooks::ReApiMHookChain<cssdk::ReHookPlayerRemovePlayerItem, cssdk::qboolean(cssdk::PlayerBase*, cssdk::PlayerItemBase*)>;
 using ReGamePlayerRemovePlayerItemMCallback = core::Delegate<cssdk::qboolean(const ReGamePlayerRemovePlayerItemMChain& chain, cssdk::PlayerBase* player, cssdk::PlayerItemBase* item)>;
 
+// CBasePlayer::DropPlayerItem
+using ReGamePlayerDropPlayerItemMChain = mhooks::ReApiMHookChain<cssdk::ReHookPlayerDropPlayerItem, cssdk::EntityBase*(cssdk::PlayerBase*, const char*)>;
+using ReGamePlayerDropPlayerItemMCallback = core::Delegate<cssdk::EntityBase*(const ReGamePlayerDropPlayerItemMChain& chain, cssdk::PlayerBase* player, const char* itemName)>;
+
 // CBasePlayer::Observer_IsValidTarget
 using ReGamePlayerObserverIsValidTargetMChain = mhooks::ReApiMHookChain<cssdk::ReHookPlayerObserverIsValidTarget, cssdk::PlayerBase*(cssdk::PlayerBase*, int, bool)>;
 using ReGamePlayerObserverIsValidTargetMCallback = core::Delegate<cssdk::PlayerBase*(const ReGamePlayerObserverIsValidTargetMChain& chain, cssdk::PlayerBase* observer, int player_index, bool same_team)>;
@@ -443,6 +447,17 @@ namespace mhooks
      */
     ATTR_MINSIZE MHook* MHookReGamePlayerRemovePlayerItem(
         ReGamePlayerRemovePlayerItemMCallback callback,
+        cssdk::HookChainPriority priority = cssdk::HookChainPriority::Normal, bool enable = true);
+
+    /**
+     * @brief N/D
+     *
+     * @param callback Hook callback function.
+     * @param priority Hook priority.
+     * @param enable Should a hook be enabled?
+     */
+    ATTR_MINSIZE MHook* MHookReGamePlayerDropPlayerItem(
+        ReGamePlayerDropPlayerItemMCallback callback,
         cssdk::HookChainPriority priority = cssdk::HookChainPriority::Normal, bool enable = true);
 
     /**

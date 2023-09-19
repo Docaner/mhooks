@@ -213,6 +213,14 @@ namespace mhooks
         return CreateHook<ReGamePlayerAddPlayerItem>(HookChains()->PlayerAddPlayerItem(), callback, priority, enable);
     }
 
+    MHook* MHookReGamePlayerDropPlayerItem(const ReGamePlayerDropPlayerItemMCallback callback,
+                                          const HookChainPriority priority, const bool enable)
+    {
+        assert(!!callback);
+        struct ReGamePlayerDropPlayerItem;
+        return CreateHook<ReGamePlayerDropPlayerItem>(HookChains()->PlayerDropPlayerItem(), callback, priority, enable);
+    }
+
     MHook* MHookReGamePlayerRemovePlayerItem(const ReGamePlayerRemovePlayerItemMCallback callback,
                                              const HookChainPriority priority, const bool enable)
     {
