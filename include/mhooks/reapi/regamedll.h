@@ -56,12 +56,12 @@ using ReGameInternalCommandMChain = mhooks::ReApiMHookChain<cssdk::ReHookInterna
 using ReGameInternalCommandMCallback = core::Delegate<void(const ReGameInternalCommandMChain& chain, cssdk::Edict* client, const char* command, const char* arg1)>;
 
 // CGameRules::InstallGameRules
-using ReGameRulesInstallGameRulesMChain = mhooks::ReApiMHookChain<cssdk::ReHookInstallGameRules, cssdk::GameRules*()>;
-using ReGameRulesInstallGameRulesMCallback = core::Delegate<cssdk::GameRules*(const ReGameRulesInstallGameRulesMChain& chain)>;
+using ReGameRulesInstallGameRulesMChain = mhooks::ReApiMHookChain<cssdk::ReHookInstallGameRules, cssdk::GameRulesBase*()>;
+using ReGameRulesInstallGameRulesMCallback = core::Delegate<cssdk::GameRulesBase*(const ReGameRulesInstallGameRulesMChain& chain)>;
 
 // CGameRules::FreeGameRules
-using ReGameRulesFreeGameRulesMChain = mhooks::ReApiMHookChain<cssdk::ReHookFreeGameRules, void(cssdk::GameRules**)>;
-using ReGameRulesFreeGameRulesMCallback = core::Delegate<void(const ReGameRulesFreeGameRulesMChain& chain, cssdk::GameRules**)>;
+using ReGameRulesFreeGameRulesMChain = mhooks::ReApiMHookChain<cssdk::ReHookFreeGameRules, void(cssdk::GameRulesBase**)>;
+using ReGameRulesFreeGameRulesMCallback = core::Delegate<void(const ReGameRulesFreeGameRulesMChain& chain, cssdk::GameRulesBase**)>;
 
 // CGameRules::OnRoundFreezeEnd
 using ReGameRulesRoundFreezeEndMChain = mhooks::ReApiMHookChain<cssdk::ReHookGameRulesOnRoundFreezeEnd, void()>;
